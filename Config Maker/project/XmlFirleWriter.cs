@@ -1,0 +1,52 @@
+﻿using System;
+using System.IO;
+using System.Xml;
+using System.Xml.Linq;
+
+namespace Config_Maker
+{
+    internal class XmlFileWriter
+    {
+        private string outputPath;
+        private string outputXmlString;
+        private string KEYS = "keys";
+        private string REMOTE = "remote";
+        private string KEY = "key";
+        private string NAME = "name";
+        private string TYPE = "type";
+        private string HEX = "hex";
+
+        public XmlFileWriter(string outputFolder, string outputXmlString)
+        {
+            this.outputPath = outputFolder;
+            this.outputXmlString = outputXmlString;
+        }
+
+        public void WriteXml()
+        {
+            XmlDocument document = new XmlDocument();
+            XmlDeclaration xmlDeclaration = document.CreateXmlDeclaration("1.0", "utf-8", null);
+            XmlElement remoteNode = document.CreateElement(REMOTE);
+            XmlElement keysNode = document.CreateElement(KEYS);
+            outputXmlString.Trim();
+            string[] parsedString = outputXmlString.Split(' ');
+            foreach (string nodeVal in parsedString)
+            {
+                if (nodeVal.Equals("")) continue;
+                XmlElement keyNode = document.CreateElement(KEY);
+                keyNode.SetAttribute(TYPE, HEX);
+                keyNode.SetAttribute(NAME, nodeVal);
+                keysNode.AppendChild(keyNode);
+            }
+
+            remoteNode.AppendChild(keysNode);
+            document.AppendChild(remoteNode);
+
+            document.InsertBefore(xmlDeclaration, remoteNode);
+            if (!Directory.Exists(outputPath)) Directory.CreateDirectory(outputPath);
+            document.Save(outputPath +"\\config.xml");
+            System.Console.WriteLine("done! wrote to: "+ outputPath);
+        }
+
+    }
+}
