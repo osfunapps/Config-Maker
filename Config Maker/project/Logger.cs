@@ -12,11 +12,12 @@ namespace WindowsFormsApp1.project
 
         internal static string GetTxt()
         {
-            return "Version 1.2" +
+            return "Version 1.3" +
+                   "\n\nVersion 1.2" +
+                   "\n- addd mute btn" +
                    "\n- added volume button" +
                    "\n- window scaled" +
-                   "\n" +
-                   "\nVersion 1.1" +
+                   "\n\nVersion 1.1" +
                    "\n- added log btn" +
                    "\n- added numbers shortcut btn" +
                    "\n- added navigation shortcut btn" +

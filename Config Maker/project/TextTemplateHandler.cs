@@ -7,6 +7,6 @@
         public static string NAVIGATION_TXT = "up down left right select ";
         public static string CHANNEL_TXT = "chan_up chan_down ";
         public static string COLORS_TXT = "red green yellow blue ";
-        public static string VOLUME_TXT = "device_vol+ device_vol- ";
+        public static string VOLUME_TXT = "device_vol+ device_vol- device_mute ";
     }
 }
