@@ -9,11 +9,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.project;
+using Config_Maker.project.ac;
 
 namespace Config_Maker
 {
     public partial class Form1 : Form
     {
+        private string FILE_MADE = "File Made!";
+        private string WINDOW_INFO = "Information";
+
+        public static char HOT = 'H', COLD = 'C', WIND = 'W', AI = 'A';
+        private string REMOTE_TYPE_AC = "ac";
+        private string REMOTE_TYPE_NORMAL = "normal";
+
+
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +33,7 @@ namespace Config_Maker
         {
             outputFolderTB.BackColor = Color.Red;
             this.logBtn.TabStop = false;
+            degreeTypeCB.SelectedIndex = 0;
         }
 
         private void foldersRTB_TextChanged(object sender, EventArgs e)
@@ -53,7 +63,7 @@ namespace Config_Maker
 
         private void GoBtn_Click(object sender, EventArgs e)
         {
-            XmlFileWriter xmlFileWriter = new XmlFileWriter(outputFolderTB.Text, foldersRTB.Text);
+            XmlFileWriter xmlFileWriter = new XmlFileWriter(outputFolderTB.Text, foldersRTB.Text, REMOTE_TYPE_NORMAL);
             xmlFileWriter.WriteXml();
             Thread.Sleep(500);
             outputFolderTB.BackColor = Color.Red;
@@ -70,7 +80,15 @@ namespace Config_Maker
 
         private void IrCodesPathDropHandler(object sender, DragEventArgs e)
         {
-            outputFolderTB.Text = TitleExporter(((string[])e.Data.GetData(DataFormats.FileDrop, false))[0], false);
+            var senderTB = (TextBox)sender;
+            if (senderTB.Name == "acOutputTB")
+            {
+                acOutputTB.Text = TitleExporter(((string[])e.Data.GetData(DataFormats.FileDrop, false))[0], false);
+            }
+            else
+            {
+                outputFolderTB.Text = TitleExporter(((string[])e.Data.GetData(DataFormats.FileDrop, false))[0], false);
+            }
         }
 
         private string TitleExporter(string fileLongStr, bool onlyFileName)
@@ -128,6 +146,38 @@ namespace Config_Maker
             foldersRTB.AppendText(TextTemplateHandler.VOLUME_TXT);
         }
 
+        private void acGoBtn_Click(object sender, EventArgs e)
+        {
+            ACXmlFileWriter xmlFileWriter = new ACXmlFileWriter(acOutputTB.Text, acRTB.Text, minDegreeDUD.Text, maxDegreeDUD.Text, GetModesList(), fanSpeedTB.Value, degreeTypeCB.Text, aiCB.Checked, REMOTE_TYPE_AC);
+            xmlFileWriter.WriteXml();
+            MessageBox.Show(FILE_MADE, WINDOW_INFO);
+        }
+
+        private List<char> GetModesList()
+        {
+            List<char> modesList = new List<char>();
+
+            if (coldCB.Checked)
+                modesList.Add(COLD);
+
+            if (hotCB.Checked)
+                modesList.Add(HOT);
+
+            if (windCB.Checked)
+                modesList.Add(WIND);
+
+            if (aiCB.Checked)
+                modesList.Add(AI);
+            return modesList;
+        }
+
+        private void acBrowseBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = acOutputFolderDialog.ShowDialog();
+            if (result == DialogResult.OK && acOutputFolderDialog.SelectedPath.Length > 0)
+                acOutputTB.Text = acOutputFolderDialog.SelectedPath;
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             Console.WriteLine(keyData);
@@ -136,6 +186,7 @@ namespace Config_Maker
                 case Keys.Alt | Keys.V:
                     foldersRTB.AppendText(TextTemplateHandler.VOLUME_TXT);
                     break;
+                case Keys.Control | Keys.N:
                 case Keys.Alt | Keys.N:
                     foldersRTB.AppendText(TextTemplateHandler.NUMBERS_TXT);
                     break;
@@ -146,5 +197,40 @@ namespace Config_Maker
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void swingBtn_Click(object sender, EventArgs e)
+        {
+            acRTB.AppendText(TextTemplateHandler.SWING_TXT);
+        }
+
+        private void fanSpeedBtn_Click(object sender, EventArgs e)
+        {
+            acRTB.AppendText(TextTemplateHandler.FAN_SPEED_TXT);
+        }
+
+        private void tempUpBtn_Click(object sender, EventArgs e)
+        {
+            acRTB.AppendText(TextTemplateHandler.TEMP_UP_TXT);
+        }
+
+        private void tempDownBtn_Click(object sender, EventArgs e)
+        {
+            acRTB.AppendText(TextTemplateHandler.TEMP_DOWN_TXT);
+        }
+
+        private void modesBtn_Click(object sender, EventArgs e)
+        {
+            acRTB.AppendText(TextTemplateHandler.MODE_TXT);
+        }
+
+        private void powerBtn_Click(object sender, EventArgs e)
+        {
+            acRTB.AppendText(TextTemplateHandler.POWER_1_TXT);
+            acRTB.AppendText(TextTemplateHandler.POWER_2_TXT);
+        }
     }
 }

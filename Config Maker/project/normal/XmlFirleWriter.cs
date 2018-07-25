@@ -15,11 +15,14 @@ namespace Config_Maker
         private string NAME = "name";
         private string TYPE = "type";
         private string HEX = "hex";
+        private string remoteType;
+        public static string REMOTE_TYPE = "remote_type";
 
-        public XmlFileWriter(string outputFolder, string outputXmlString)
+        public XmlFileWriter(string outputFolder, string outputXmlString, string remoteType)
         {
             this.outputPath = outputFolder;
             this.outputXmlString = outputXmlString;
+            this.remoteType = remoteType;
         }
 
         public void WriteXml()
@@ -28,6 +31,13 @@ namespace Config_Maker
             XmlDeclaration xmlDeclaration = document.CreateXmlDeclaration("1.0", "utf-8", null);
             XmlElement remoteNode = document.CreateElement(REMOTE);
             XmlElement keysNode = document.CreateElement(KEYS);
+
+            //append remote type
+            XmlElement remoteTypeNode = document.CreateElement(REMOTE_TYPE);
+            remoteTypeNode.SetAttribute(TYPE, remoteType);
+            keysNode.AppendChild(remoteTypeNode);
+
+
             outputXmlString.Trim();
             string[] parsedString = outputXmlString.Split(' ');
             foreach (string nodeVal in parsedString)

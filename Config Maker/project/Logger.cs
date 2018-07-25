@@ -13,6 +13,7 @@ namespace WindowsFormsApp1.project
         internal static string GetTxt()
         {
             return "Version 1.4" +
+                   "\n- merged the ac config with the normal one" +
                    "\n- tab navigation enabled only for the text and the generation of the file" +
                    "\n- new shortcuts for generating text: numbers [alt + n] colors [alt + c] and volume [alt + v] " +
                    "\n- the path will be marked red until the user will choose to change it. On go click the red color will return" +
