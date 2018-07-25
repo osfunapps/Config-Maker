@@ -12,7 +12,10 @@ namespace WindowsFormsApp1.project
 
         internal static string GetTxt()
         {
-            return "Version 1.3" +
+            return "Version 1.4" +
+                   "\n- tab navigation enabled only for the text and the generation of the file" +
+                   "\n- new shortcuts for generating text: numbers [alt + n] colors [alt + c] and volume [alt + v] " +
+                   "\n- the path will be marked red until the user will choose to change it. On go click the red color will return" +
                    "\n\nVersion 1.2" +
                    "\n- addd mute btn" +
                    "\n- added volume button" +

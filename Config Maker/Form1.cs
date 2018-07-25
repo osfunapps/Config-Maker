@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.project;
@@ -16,11 +17,17 @@ namespace Config_Maker
         public Form1()
         {
             InitializeComponent();
+            PrepareFirstLaunch();
+        }
+
+        private void PrepareFirstLaunch()
+        {
+            outputFolderTB.BackColor = Color.Red;
+            this.logBtn.TabStop = false;
         }
 
         private void foldersRTB_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -30,6 +37,8 @@ namespace Config_Maker
 
         private void outputFolderTB_TextChanged(object sender, EventArgs e)
         {
+            outputFolderTB.BackColor = Color.White;
+
         }
 
         private void outputFolderBrowseBtn_Click(object sender, EventArgs e)
@@ -46,7 +55,8 @@ namespace Config_Maker
         {
             XmlFileWriter xmlFileWriter = new XmlFileWriter(outputFolderTB.Text, foldersRTB.Text);
             xmlFileWriter.WriteXml();
-
+            Thread.Sleep(500);
+            outputFolderTB.BackColor = Color.Red;
         }
 
 
@@ -116,7 +126,25 @@ namespace Config_Maker
         private void volumeBtn_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.VOLUME_TXT);
-
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            Console.WriteLine(keyData);
+            switch (keyData)
+            {
+                case Keys.Alt | Keys.V:
+                    foldersRTB.AppendText(TextTemplateHandler.VOLUME_TXT);
+                    break;
+                case Keys.Alt | Keys.N:
+                    foldersRTB.AppendText(TextTemplateHandler.NUMBERS_TXT);
+                    break;
+                case Keys.Alt | Keys.C:
+                    foldersRTB.AppendText(TextTemplateHandler.COLORS_TXT);
+                    break;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }

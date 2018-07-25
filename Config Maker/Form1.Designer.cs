@@ -61,7 +61,7 @@
             this.GoBtn.Location = new System.Drawing.Point(159, 287);
             this.GoBtn.Name = "GoBtn";
             this.GoBtn.Size = new System.Drawing.Size(75, 24);
-            this.GoBtn.TabIndex = 7;
+            this.GoBtn.TabIndex = 3;
             this.GoBtn.Text = "Go";
             this.GoBtn.UseVisualStyleBackColor = true;
             this.GoBtn.Click += new System.EventHandler(this.GoBtn_Click);
@@ -71,7 +71,8 @@
             this.outputFolderBrowseBtn.Location = new System.Drawing.Point(313, 248);
             this.outputFolderBrowseBtn.Name = "outputFolderBrowseBtn";
             this.outputFolderBrowseBtn.Size = new System.Drawing.Size(81, 24);
-            this.outputFolderBrowseBtn.TabIndex = 12;
+            this.outputFolderBrowseBtn.TabIndex = 0;
+            this.outputFolderBrowseBtn.TabStop = false;
             this.outputFolderBrowseBtn.Text = "Browse...";
             this.outputFolderBrowseBtn.UseVisualStyleBackColor = true;
             this.outputFolderBrowseBtn.Click += new System.EventHandler(this.outputFolderBrowseBtn_Click);
@@ -82,7 +83,7 @@
             this.outputFolderTB.Location = new System.Drawing.Point(95, 250);
             this.outputFolderTB.Name = "outputFolderTB";
             this.outputFolderTB.Size = new System.Drawing.Size(212, 20);
-            this.outputFolderTB.TabIndex = 11;
+            this.outputFolderTB.TabIndex = 2;
             this.outputFolderTB.TextChanged += new System.EventHandler(this.outputFolderTB_TextChanged);
             this.outputFolderTB.DragDrop += new System.Windows.Forms.DragEventHandler(this.IrCodesPathDropHandler);
             this.outputFolderTB.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnterHandler);
@@ -107,8 +108,7 @@
             this.logBtn.Location = new System.Drawing.Point(525, 297);
             this.logBtn.Name = "logBtn";
             this.logBtn.Size = new System.Drawing.Size(29, 13);
-            this.logBtn.TabIndex = 19;
-            this.logBtn.TabStop = true;
+            this.logBtn.TabIndex = 0;
             this.logBtn.Text = "LOG";
             this.logBtn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logBtn_LinkClicked);
             // 
@@ -118,6 +118,7 @@
             this.navigationBtn.Name = "navigationBtn";
             this.navigationBtn.Size = new System.Drawing.Size(75, 23);
             this.navigationBtn.TabIndex = 20;
+            this.navigationBtn.TabStop = false;
             this.navigationBtn.Text = "Navigation";
             this.navigationBtn.UseVisualStyleBackColor = true;
             this.navigationBtn.Click += new System.EventHandler(this.navigationBtn_Click);
@@ -128,6 +129,7 @@
             this.numbersBtn.Name = "numbersBtn";
             this.numbersBtn.Size = new System.Drawing.Size(75, 23);
             this.numbersBtn.TabIndex = 21;
+            this.numbersBtn.TabStop = false;
             this.numbersBtn.Text = "Numbers";
             this.numbersBtn.UseVisualStyleBackColor = true;
             this.numbersBtn.Click += new System.EventHandler(this.Numbers_Click);
@@ -140,6 +142,7 @@
             this.colorsBrn.Name = "colorsBrn";
             this.colorsBrn.Size = new System.Drawing.Size(75, 23);
             this.colorsBrn.TabIndex = 22;
+            this.colorsBrn.TabStop = false;
             this.colorsBrn.Text = "Colors";
             this.colorsBrn.UseVisualStyleBackColor = false;
             this.colorsBrn.Click += new System.EventHandler(this.colorsBrn_Click);
@@ -150,6 +153,7 @@
             this.channelBtn.Name = "channelBtn";
             this.channelBtn.Size = new System.Drawing.Size(75, 23);
             this.channelBtn.TabIndex = 23;
+            this.channelBtn.TabStop = false;
             this.channelBtn.Text = "Channel";
             this.channelBtn.UseVisualStyleBackColor = true;
             this.channelBtn.Click += new System.EventHandler(this.channelBtn_Click);
@@ -160,6 +164,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 24;
+            this.button2.TabStop = false;
             this.button2.Text = "VCR";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -170,6 +175,7 @@
             this.volumeBtn.Name = "volumeBtn";
             this.volumeBtn.Size = new System.Drawing.Size(75, 23);
             this.volumeBtn.TabIndex = 25;
+            this.volumeBtn.TabStop = false;
             this.volumeBtn.Text = "Volume";
             this.volumeBtn.UseVisualStyleBackColor = true;
             this.volumeBtn.Click += new System.EventHandler(this.volumeBtn_Click);
