@@ -46,11 +46,7 @@ namespace Config_Maker.project.ac
             XmlElement keysNode = document.CreateElement(KEYS);
             outputXmlString.Trim();
 
-            //append remote type
-            XmlElement remoteTypeNode = document.CreateElement(XmlFileWriter.REMOTE_TYPE);
-            remoteTypeNode.SetAttribute(TYPE, remoteType);
-            keysNode.AppendChild(remoteTypeNode);
-
+            
             string[] parsedString = outputXmlString.Split(' ');
             foreach (string nodeVal in parsedString)
             {
@@ -73,6 +69,9 @@ namespace Config_Maker.project.ac
 
             remoteNode.AppendChild(keysNode);
             document.AppendChild(remoteNode);
+
+            //append remote type
+            new RemoteTypeAppender().AppendRemoteType(document, remoteNode, remoteType);
 
             document.InsertBefore(xmlDeclaration, remoteNode);
             if (!Directory.Exists(outputPath)) Directory.CreateDirectory(outputPath);

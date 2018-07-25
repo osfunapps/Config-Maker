@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Config_Maker.project;
+using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
@@ -16,7 +17,6 @@ namespace Config_Maker
         private string TYPE = "type";
         private string HEX = "hex";
         private string remoteType;
-        public static string REMOTE_TYPE = "remote_type";
 
         public XmlFileWriter(string outputFolder, string outputXmlString, string remoteType)
         {
@@ -32,12 +32,6 @@ namespace Config_Maker
             XmlElement remoteNode = document.CreateElement(REMOTE);
             XmlElement keysNode = document.CreateElement(KEYS);
 
-            //append remote type
-            XmlElement remoteTypeNode = document.CreateElement(REMOTE_TYPE);
-            remoteTypeNode.SetAttribute(TYPE, remoteType);
-            keysNode.AppendChild(remoteTypeNode);
-
-
             outputXmlString.Trim();
             string[] parsedString = outputXmlString.Split(' ');
             foreach (string nodeVal in parsedString)
@@ -51,6 +45,10 @@ namespace Config_Maker
 
             remoteNode.AppendChild(keysNode);
             document.AppendChild(remoteNode);
+
+            //append remote type
+            new RemoteTypeAppender().AppendRemoteType(document, remoteNode, remoteType);
+
 
             document.InsertBefore(xmlDeclaration, remoteNode);
             if (!Directory.Exists(outputPath)) Directory.CreateDirectory(outputPath);

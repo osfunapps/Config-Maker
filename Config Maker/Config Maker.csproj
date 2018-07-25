@@ -54,6 +54,7 @@
     <Compile Include="project\ac\ACXmlFileWriter.cs" />
     <Compile Include="project\Program.cs" />
     <Compile Include="project\Logger.cs" />
+    <Compile Include="project\RemoteTypeAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="project\normal\XmlFirleWriter.cs" />
     <Compile Include="project\normal\TextTemplateHandler.cs" />
