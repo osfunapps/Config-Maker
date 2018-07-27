@@ -38,7 +38,7 @@ namespace Config_Maker
             {
                 if (nodeVal.Equals("")) continue;
                 XmlElement keyNode = document.CreateElement(KEY);
-                keyNode.SetAttribute(TYPE, HEX);
+                keyNode.SetAttribute(TYPE, XMLTypes.NORMAL_BUTTON);
                 keyNode.SetAttribute(NAME, nodeVal);
                 keysNode.AppendChild(keyNode);
             }

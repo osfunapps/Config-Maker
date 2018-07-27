@@ -10,19 +10,20 @@ namespace Config_Maker.project.ac
         private string outputXmlString;
         private string KEYS = "keys";
         private string REMOTE = "remote";
-        private string KEY = "key";
-        private string NAME = "name";
-        private string TYPE = "type";
-        private string HEX = "hex";
+        public static string KEY = "key";
+        public static string NAME = "name";
+        public static string TYPE = "type";
         private int minDegree, maxDegree;
         private int fanMaxSpeed;
         private List<char> modesList;
-        private string MIN_DEGREE = "min_degree";
-        private string MAX_DEGREE = "max_degree";
-        private string AC_DISPLAY = "ac_display";
+
+        private string INFO_MIN_DEGREE = "min_degree";
+        private string INFO_MAX_DEGREE = "max_degree";
+        
         private string degreeType;
         private bool _aiRequired;
         private string remoteType;
+        private XmlKeyNodeGenerator keyGenerator;
 
         public ACXmlFileWriter
             (string outputFolder, string outputXmlString, string minDegree, string maxDegree, List<char> modesList, int fanMaxSpeed, string degreeType, bool aiRequired, string remoteType)
@@ -46,7 +47,8 @@ namespace Config_Maker.project.ac
             XmlElement keysNode = document.CreateElement(KEYS);
             outputXmlString.Trim();
 
-            
+            keyGenerator = new XmlKeyNodeGenerator(document);
+
             string[] parsedString = outputXmlString.Split(' ');
             foreach (string nodeVal in parsedString)
             {
@@ -55,14 +57,12 @@ namespace Config_Maker.project.ac
                 if (nodeVal.StartsWith("\n"))
                     strippedNode = nodeVal.Substring(1);
 
-                XmlElement keyNode = document.CreateElement(KEY);
-                keyNode.SetAttribute(TYPE, HEX);
-                keyNode.SetAttribute(NAME, strippedNode);
+                var keyNode = keyGenerator.GenerateScreenNode(strippedNode);
                 keysNode.AppendChild(keyNode);
             }
 
-            SetDegreesNodes(document, keysNode);
             SetDisplayNode(document, keysNode);
+            SetDegreesNodes(document, keysNode);
             SetAiNodes(document, keysNode);
             SetWindNodes(document, keysNode);
 
@@ -84,7 +84,7 @@ namespace Config_Maker.project.ac
             for (int fanSpeed = 1; fanSpeed < fanMaxSpeed + 1; fanSpeed++)
             {
                 XmlElement windNode = document.CreateElement(KEY);
-                windNode.SetAttribute(TYPE, HEX);
+                windNode.SetAttribute(TYPE, XMLTypes.HEX);
                 windNode.SetAttribute(NAME, Form1.WIND + "F" + fanSpeed);
                 keysNode.AppendChild(windNode);
             }
@@ -97,7 +97,7 @@ namespace Config_Maker.project.ac
             for (int i = 2; i > -3; i--)
             {
                 XmlElement aiNode = document.CreateElement(KEY);
-                aiNode.SetAttribute(TYPE, HEX);
+                aiNode.SetAttribute(TYPE, XMLTypes.HEX);
                 string num = i.ToString();
                 if (i > 0)
                     num = "+" + num;
@@ -109,10 +109,7 @@ namespace Config_Maker.project.ac
 
         private void SetDisplayNode(XmlDocument document, XmlElement keysNode)
         {
-            XmlElement acDisplayNode = document.CreateElement(KEY);
-            acDisplayNode.SetAttribute(TYPE, HEX);
-            acDisplayNode.SetAttribute(NAME, AC_DISPLAY);
-        
+            var acDisplayNode = keyGenerator.GenerateScreenPanelNode();
             keysNode.AppendChild(acDisplayNode);
         }
 
@@ -141,7 +138,7 @@ namespace Config_Maker.project.ac
             for (int degree = minDegree; degree < maxDegree + 1; degree++)
             {
                 XmlElement keyNode = document.CreateElement(KEY);
-                keyNode.SetAttribute(TYPE, HEX);
+                keyNode.SetAttribute(TYPE, XMLTypes.HEX);
                 keyNode.SetAttribute(NAME, modesList[mode].ToString() + degree + "F" + fanSpeed);
                 keysNode.AppendChild(keyNode);
             }
@@ -153,7 +150,7 @@ namespace Config_Maker.project.ac
             for (int degree = maxDegree; degree > minDegree - 1; degree--)
             {
                 XmlElement keyNode = document.CreateElement(KEY);
-                keyNode.SetAttribute(TYPE, HEX);
+                keyNode.SetAttribute(TYPE, XMLTypes.HEX);
                 keyNode.SetAttribute(NAME, modesList[mode].ToString() + degree + "F" + fanSpeed);
                 keysNode.AppendChild(keyNode);
             }
@@ -163,39 +160,27 @@ namespace Config_Maker.project.ac
 
         private void SetRemoteParams(XmlDocument document, XmlElement keysNode)
         {
-            XmlElement minNode = document.CreateElement(KEY);
-            minNode.SetAttribute(TYPE, HEX);
-            minNode.SetAttribute(NAME, MIN_DEGREE);
-            minNode.InnerText = minDegree.ToString();
-
-            XmlElement maxNode = document.CreateElement(KEY);
-            maxNode.SetAttribute(TYPE, HEX);
-            maxNode.SetAttribute(NAME, MAX_DEGREE);
-            maxNode.InnerText = maxDegree.ToString();
-
-            XmlElement modesNode = document.CreateElement(KEY);
-            modesNode.SetAttribute(TYPE, HEX);
-            modesNode.SetAttribute(NAME, TextTemplateHandler.MODES);
-            foreach (var mode in modesList)
-                modesNode.InnerText += " " + mode;
-            modesNode.InnerText = modesNode.InnerText.Trim();
-            modesNode.InnerText = modesNode.InnerText.Replace(" ", ", ");
-
-            XmlElement maxFanPowerNode = document.CreateElement(KEY);
-            maxFanPowerNode.SetAttribute(TYPE, HEX);
-            maxFanPowerNode.SetAttribute(NAME, TextTemplateHandler.MAX_FAN_POWER);
-            maxFanPowerNode.InnerText = fanMaxSpeed.ToString();
-
-            XmlElement degreeTypeNode = document.CreateElement(KEY);
-            degreeTypeNode.SetAttribute(TYPE, HEX);
-            degreeTypeNode.SetAttribute(NAME, TextTemplateHandler.DEGREE_TYPE);
-            degreeTypeNode.InnerText = degreeType;
+            var minNode = keyGenerator.GenerateInfoNode(INFO_MIN_DEGREE, minDegree.ToString());
+            var maxNode = keyGenerator.GenerateInfoNode(INFO_MAX_DEGREE, maxDegree.ToString());
+            var modesNode = keyGenerator.GenerateInfoNode(TextTemplateHandler.INFO_MODES, FetchModesTxt());
+            var maxFanPowerNode = keyGenerator.GenerateInfoNode(TextTemplateHandler.INFO_MAX_FAN_POWER, fanMaxSpeed.ToString());
+            var degreeTypeNode = keyGenerator.GenerateInfoNode(TextTemplateHandler.INFO_DEGREE_TYPE, degreeType);
 
             keysNode.AppendChild(degreeTypeNode);
             keysNode.AppendChild(maxFanPowerNode);
             keysNode.AppendChild(modesNode);
             keysNode.AppendChild(minNode);
             keysNode.AppendChild(maxNode);
+        }
+
+        private string FetchModesTxt()
+        {
+            string modesTxt = "";
+            foreach (var mode in modesList)
+                modesTxt += " " + mode;
+            modesTxt = modesTxt.Trim();
+            modesTxt = modesTxt.Replace(" ", ", ");
+            return modesTxt;
         }
     }
 }
