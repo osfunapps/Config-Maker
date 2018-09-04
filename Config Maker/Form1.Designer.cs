@@ -114,7 +114,7 @@
             this.GoBtn.Name = "GoBtn";
             this.GoBtn.Size = new System.Drawing.Size(100, 57);
             this.GoBtn.TabIndex = 3;
-            this.GoBtn.Text = "Go";
+            this.GoBtn.Text = "Go\r\n(CTRL + G)";
             this.GoBtn.UseVisualStyleBackColor = true;
             this.GoBtn.Click += new System.EventHandler(this.GoBtn_Click);
             // 
@@ -168,37 +168,40 @@
             // navigationBtn
             // 
             this.navigationBtn.BackColor = System.Drawing.Color.Chartreuse;
+            this.navigationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navigationBtn.Location = new System.Drawing.Point(17, 19);
             this.navigationBtn.Name = "navigationBtn";
             this.navigationBtn.Size = new System.Drawing.Size(97, 55);
             this.navigationBtn.TabIndex = 20;
             this.navigationBtn.TabStop = false;
-            this.navigationBtn.Text = "Navigation";
+            this.navigationBtn.Text = "Navigation\r\n(CTRL + N)";
             this.navigationBtn.UseVisualStyleBackColor = false;
             this.navigationBtn.Click += new System.EventHandler(this.navigationBtn_Click);
             // 
             // numbersBtn
             // 
             this.numbersBtn.BackColor = System.Drawing.Color.Yellow;
+            this.numbersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numbersBtn.Location = new System.Drawing.Point(411, 19);
             this.numbersBtn.Name = "numbersBtn";
             this.numbersBtn.Size = new System.Drawing.Size(115, 55);
             this.numbersBtn.TabIndex = 21;
             this.numbersBtn.TabStop = false;
-            this.numbersBtn.Text = "Numbers";
+            this.numbersBtn.Text = "Numbers\r\n(ALT + N)";
             this.numbersBtn.UseVisualStyleBackColor = false;
             this.numbersBtn.Click += new System.EventHandler(this.Numbers_Click);
             // 
             // colorsBrn
             // 
             this.colorsBrn.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.colorsBrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorsBrn.ForeColor = System.Drawing.Color.Transparent;
             this.colorsBrn.Location = new System.Drawing.Point(161, 19);
             this.colorsBrn.Name = "colorsBrn";
             this.colorsBrn.Size = new System.Drawing.Size(97, 55);
             this.colorsBrn.TabIndex = 22;
             this.colorsBrn.TabStop = false;
-            this.colorsBrn.Text = "Colors";
+            this.colorsBrn.Text = "Colors\r\n(ALT + C)\r\n";
             this.colorsBrn.UseVisualStyleBackColor = false;
             this.colorsBrn.Click += new System.EventHandler(this.colorsBrn_Click);
             // 
@@ -209,7 +212,7 @@
             this.channelBtn.Size = new System.Drawing.Size(97, 45);
             this.channelBtn.TabIndex = 23;
             this.channelBtn.TabStop = false;
-            this.channelBtn.Text = "Channel";
+            this.channelBtn.Text = "Channel\r";
             this.channelBtn.UseVisualStyleBackColor = true;
             this.channelBtn.Click += new System.EventHandler(this.channelBtn_Click);
             // 
@@ -227,12 +230,13 @@
             // volumeBtn
             // 
             this.volumeBtn.BackColor = System.Drawing.Color.Crimson;
+            this.volumeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.volumeBtn.Location = new System.Drawing.Point(285, 19);
             this.volumeBtn.Name = "volumeBtn";
             this.volumeBtn.Size = new System.Drawing.Size(90, 55);
             this.volumeBtn.TabIndex = 25;
             this.volumeBtn.TabStop = false;
-            this.volumeBtn.Text = "Volume";
+            this.volumeBtn.Text = "Volume\r\n(ALT + V)\r\n";
             this.volumeBtn.UseVisualStyleBackColor = false;
             this.volumeBtn.Click += new System.EventHandler(this.volumeBtn_Click);
             // 
@@ -278,11 +282,12 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(10, 25);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.Size = new System.Drawing.Size(71, 26);
             this.label13.TabIndex = 36;
-            this.label13.Text = "Output Folder";
+            this.label13.Text = "Output Folder\r\n(CTRL + P)";
             // 
             // groupBox1
             // 

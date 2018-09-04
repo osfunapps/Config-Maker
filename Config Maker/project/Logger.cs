@@ -12,7 +12,11 @@ namespace WindowsFormsApp1.project
 
         internal static string GetTxt()
         {
-            return "Version 1.4" +
+            return "\nVersion 1.5" +
+                   "\n- added shortcuts to all buttons" +
+                   "\n- added focus when lost after click on a button" +
+                   "\n- ctrl + T to go back to text area" +
+                   "\n\nVersion 1.4" +
                    "\n- merged the ac config with the normal one" +
                    "\n- tab navigation enabled only for the text and the generation of the file" +
                    "\n- new shortcuts for generating text: numbers [alt + n] colors [alt + c] and volume [alt + v] " +

@@ -118,32 +118,38 @@ namespace Config_Maker
         private void Numbers_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.NUMBERS_TXT);
+            foldersRTB.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.VCR_TXT);
+            foldersRTB.Focus();
         }
 
         private void navigationBtn_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.NAVIGATION_TXT);
+            foldersRTB.Focus();
 
         }
 
         private void channelBtn_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.CHANNEL_TXT);
+            foldersRTB.Focus();
         }
 
         private void colorsBrn_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.COLORS_TXT);
+            foldersRTB.Focus();
         }
 
         private void volumeBtn_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.VOLUME_TXT);
+            foldersRTB.Focus();
         }
 
         private void acGoBtn_Click(object sender, EventArgs e)
@@ -186,12 +192,27 @@ namespace Config_Maker
                 case Keys.Alt | Keys.V:
                     foldersRTB.AppendText(TextTemplateHandler.VOLUME_TXT);
                     break;
+
+                case Keys.Control | Keys.G:
+                    GoBtn.PerformClick();
+                    return true;
+
+                case Keys.Control | Keys.P:
+                    outputFolderTB.Focus();
+                    return true;
+
                 case Keys.Control | Keys.N:
+                    foldersRTB.AppendText(TextTemplateHandler.NAVIGATION_TXT);
+                    break;
                 case Keys.Alt | Keys.N:
                     foldersRTB.AppendText(TextTemplateHandler.NUMBERS_TXT);
                     break;
                 case Keys.Alt | Keys.C:
                     foldersRTB.AppendText(TextTemplateHandler.COLORS_TXT);
+                    break;
+
+                case Keys.Control | Keys.T:
+                    foldersRTB.Focus();
                     break;
             }
             return base.ProcessCmdKey(ref msg, keyData);
