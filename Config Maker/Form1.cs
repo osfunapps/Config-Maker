@@ -250,8 +250,8 @@ namespace Config_Maker
 
         private void powerBtn_Click(object sender, EventArgs e)
         {
-            acRTB.AppendText(TextTemplateHandler.POWER_1_TXT);
             acRTB.AppendText(TextTemplateHandler.POWER_2_TXT);
+            acRTB.AppendText(TextTemplateHandler.POWER_1_TXT);
         }
     }
 }
