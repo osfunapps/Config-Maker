@@ -118,7 +118,12 @@ namespace Config_Maker
         private void Numbers_Click(object sender, EventArgs e)
         {
             foldersRTB.AppendText(TextTemplateHandler.NUMBERS_TXT);
+            var caretPos = foldersRTB.Text.IndexOf("9  ");
             foldersRTB.Focus();
+            foldersRTB.SelectionStart = caretPos + 2;
+            foldersRTB.SelectionLength = 0;
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -205,7 +210,7 @@ namespace Config_Maker
                     foldersRTB.AppendText(TextTemplateHandler.NAVIGATION_TXT);
                     break;
                 case Keys.Alt | Keys.N:
-                    foldersRTB.AppendText(TextTemplateHandler.NUMBERS_TXT);
+                    Numbers_Click(null,null);
                     break;
                 case Keys.Alt | Keys.C:
                     foldersRTB.AppendText(TextTemplateHandler.COLORS_TXT);

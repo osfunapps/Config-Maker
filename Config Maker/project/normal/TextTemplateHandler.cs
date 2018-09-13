@@ -35,7 +35,7 @@
         //ac remotes end
 
         //normal remotes
-        public static string NUMBERS_TXT = "1 2 3 4 5 6 7 8 9 __ 0 __ ";
+        public static string NUMBERS_TXT = "1 2 3 4 5 6 7 8 9  0  ";
         public static string VCR_TXT = "rewind pause forward record play stop ";
         public static string NAVIGATION_TXT = "up down left right select ";
         public static string CHANNEL_TXT = "chan_up chan_down ";
