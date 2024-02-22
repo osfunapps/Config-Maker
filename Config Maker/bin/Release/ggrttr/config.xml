@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<remote>
+  <keys>
+    <key type="hex" name="up" />
+    <key type="hex" name="down" />
+    <key type="hex" name="left" />
+    <key type="hex" name="right" />
+    <key type="hex" name="select" />
+    <key type="hex" name="red" />
+    <key type="hex" name="green" />
+    <key type="hex" name="yellow" />
+    <key type="hex" name="blue" />
+    <key type="hex" name="1" />
+    <key type="hex" name="2" />
+    <key type="hex" name="3" />
+    <key type="hex" name="4" />
+    <key type="hex" name="5" />
+    <key type="hex" name="6" />
+    <key type="hex" name="7" />
+    <key type="hex" name="8" />
+    <key type="hex" name="9" />
+    <key type="hex" name="__" />
+    <key type="hex" name="0" />
+    <key type="hex" name="__" />
+    <key type="hex" name="red" />
+    <key type="hex" name="green" />
+    <key type="hex" name="yellow" />
+    <key type="hex" name="blue" />
+    <key type="hex" name="device_vol+" />
+    <key type="hex" name="device_vol-" />
+    <key type="hex" name="device_mute" />
+  </keys>
+</remote>

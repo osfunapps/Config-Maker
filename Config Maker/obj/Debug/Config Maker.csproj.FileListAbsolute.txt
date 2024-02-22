@@ -1,0 +1,20 @@
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\bin\Debug\Config Maker.exe.config
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\bin\Debug\Config Maker.exe
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\bin\Debug\Config Maker.pdb
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config Maker.csprojResolveAssemblyReference.cache
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config_Maker.Form1.resources
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config_Maker.Properties.Resources.resources
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config Maker.csproj.GenerateResource.Cache
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config Maker.csproj.CoreCompileInputs.cache
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config Maker.exe
+C:\Users\shabat\Documents\Visual Studio 2017\Projects\Config Maker\Config Maker\obj\Debug\Config Maker.pdb
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\bin\Debug\Config Maker.exe.config
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\bin\Debug\Config Maker.exe
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\bin\Debug\Config Maker.pdb
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config Maker.csprojResolveAssemblyReference.cache
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config_Maker.Form1.resources
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config_Maker.Properties.Resources.resources
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config Maker.csproj.GenerateResource.Cache
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config Maker.csproj.CoreCompileInputs.cache
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config Maker.exe
+C:\programming\Remote - Projects\helper projects\Remotes\Config Maker\Config Maker\obj\Debug\Config Maker.pdb
